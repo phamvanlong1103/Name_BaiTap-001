@@ -6,4 +6,11 @@ export default {
   POST_DETAIL(state, data) {
     state.user = data;
   },
+  CURRENT_STEP(state, data) {
+    state.currentStep = data;
+  },
+  LOGIN(state,data){
+    state.login = data;
+
+  }
 };
