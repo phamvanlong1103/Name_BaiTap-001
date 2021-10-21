@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Edit from "../views/Edit.vue";
+import Main from "../views/Main.vue";
 Vue.use(VueRouter);
 
 const routes = [
@@ -17,6 +18,11 @@ const routes = [
     path: "/post/:id",
     name: "Edit",
     component: Edit,
+  },
+  {
+    path: "/main",
+    name: "Main",
+    component: Main,
   },
 ];
 

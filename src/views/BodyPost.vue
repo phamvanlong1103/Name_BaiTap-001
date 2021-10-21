@@ -5,9 +5,10 @@
         {{ post[item.key] }}
       </td>
       <td>
-        <button type="button" class="btn btn-success">
+        <b-button variant="danger"
+          >Button
           <router-link :to="LinkUser">Edit</router-link>
-        </button>
+        </b-button>
       </td>
     </tr>
   </tbody>
