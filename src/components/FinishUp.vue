@@ -13,7 +13,11 @@
             <span>{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <input type="submit" class="btn btn-primary mt-3" tect="Submit" />
+        <b-form-checkbox>
+          I accept the terms and use
+        </b-form-checkbox>
+        <b-button variant="success" @click="prevPage">PREVIOUS</b-button>
+        <b-button type="submit" id="btn" variant="primary">NEXT</b-button>
       </form>
     </ValidationObserver>
   </div>
@@ -34,9 +38,12 @@ export default {
     };
   },
   methods: {
-    ...mapActions(["loginAcoount"]),
+    ...mapActions(["handelNext"]),
     onSubmit() {
-      this.loginAcoount(true);
+      this.handelNext(4);
+    },
+    prevPage() {
+      this.handelNext(3);
     },
   },
 };

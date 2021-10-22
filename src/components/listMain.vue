@@ -27,11 +27,11 @@ export default {
     ...mapGetters(["getCurrentStep", "getOpen"]),
   },
   methods: {
-    show(number) {
-      if (this.getCurrentStep == number) {
+    show(n) {
+      if (this.getCurrentStep == n) {
         return "show";
-      } else if (this.getCurrentStep == number) {
-        return "pass";
+      } else if (this.getCurrentStep >= n) {
+        return "show";
       } else {
         return "";
       }

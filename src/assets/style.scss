@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.progressBar {
+  height: 25px;
+  width: 1000px;
+  position: relative;
+  margin: auto;
+  top: 100px;
+  border-radius: 6px;
+  .indicator {
+    height: 25px;
+    background: blue;
+    border-radius: 6px;
+  }
+}
+.list__main {
+  position: absolute;
+  display: flex;
+  margin-top: 50px;
+  width: 1000px;
+  justify-content: space-between;
+
+  #list__main-box {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    border-radius: 16px;
+    background: #dcdcdc;
+  }
+  .show {
+    border: 1px solid blue;
+  }
+  .pass {
+    border: no1px solid green;
+  }
+  .list__main-box-number {
+    width: 25px;
+    border-radius: 50%;
+    text-align: center;
+    background: #a9a9a9;
+    margin-right: 10px;
+  }
+}
+
+.dot {
+  position: relative;
+  top: 150px;
+  display: flex;
+  justify-content: space-around;
+}

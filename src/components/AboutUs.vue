@@ -24,7 +24,8 @@
             <span>{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-        <b-button type="submit" variant="primary">Submit</b-button>
+        <b-button variant="success" @click="prevPage">PREVIOUS</b-button>
+        <b-button type="submit" id="btn" variant="primary">NEXT</b-button>
       </form>
     </ValidationObserver>
   </div>
@@ -46,9 +47,12 @@ export default {
   methods: {
     ...mapActions(["loginAcoount", "handelNext"]),
     onSubmit() {
-      this.handelNext();
+      this.handelNext(3);
+    },
+    prevPage() {
+      this.handelNext(2);
     },
   },
 };
 </script>
-<style scoped></style>
+<style lang="scss" scoped></style>

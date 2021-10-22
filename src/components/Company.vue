@@ -20,12 +20,17 @@
         >
           <div class="form-group">
             <label>Number of Employees</label>
-            <input type="text" class="form-control" v-model="formData.number" />
+            <input
+              type="text"
+              class="form-control"
+              v-model="formData.number"
+            />
             <span>{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
 
-        <input type="submit" class="btn btn-primary mt-3" tect="Submit" />
+        <b-button variant="success" @click="prevPage">PREVIOUS</b-button>
+        <b-button type="submit" id="btn" variant="primary">NEXT</b-button>
       </form>
     </ValidationObserver>
   </div>
@@ -40,14 +45,17 @@ export default {
     return {
       formData: {
         name: "",
-        number: "",
+        number: null,
       },
     };
   },
   methods: {
-    ...mapActions(["loginAcoount"]),
+    ...mapActions(["handelNext"]),
     onSubmit() {
-      this.loginAcoount(true);
+      this.handelNext(4);
+    },
+    prevPage() {
+      this.handelNext(2);
     },
   },
 };
