@@ -13,15 +13,9 @@
             <span>{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
-         <b-form-checkbox
-      id="checkbox-1"
-      v-model="status"
-      name="checkbox-1"
-      value="accepted"
-      unchecked-value="not_accepted"
-    >
-      I accept the terms and use
-    </b-form-checkbox>
+        <b-form-checkbox>
+          I accept the terms and use
+        </b-form-checkbox>
         <b-button variant="success" @click="prevPage">PREVIOUS</b-button>
         <b-button type="submit" id="btn" variant="primary">NEXT</b-button>
       </form>

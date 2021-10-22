@@ -20,7 +20,11 @@
         >
           <div class="form-group">
             <label>Number of Employees</label>
-            <input type="text" class="form-control" v-model="formData.number" />
+            <input
+              type="text"
+              class="form-control"
+              v-model="formData.number"
+            />
             <span>{{ errors[0] }}</span>
           </div>
         </ValidationProvider>
@@ -41,7 +45,7 @@ export default {
     return {
       formData: {
         name: "",
-        number: "",
+        number: null,
       },
     };
   },
@@ -49,6 +53,9 @@ export default {
     ...mapActions(["handelNext"]),
     onSubmit() {
       this.handelNext(4);
+    },
+    prevPage() {
+      this.handelNext(2);
     },
   },
 };

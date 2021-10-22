@@ -33,9 +33,6 @@ export default {
   handelNext({ commit }, currentStep) {
     commit("CURRENT_STEP", currentStep);
   },
-  handelPrev({ commit }, currentStep) {
-    commit("CURRENT_STEP", currentStep);
-  },
   loginAcoount({ commit }, data) {
     commit("LOGIN", data);
   },
