@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <router-link to="/main">BAI TAP 2</router-link>
     <router-view />
   </div>
 </template>

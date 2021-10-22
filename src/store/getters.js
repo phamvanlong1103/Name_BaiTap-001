@@ -8,10 +8,4 @@ export default {
   getCurrentStep: (state) => {
     return state.currentStep;
   },
-  getOpen: (state) => {
-    return state.open;
-  },
-  getSubMit: (state) => {
-    return state.login;
-  },
 };
