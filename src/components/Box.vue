@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapState } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
 
 export default {
   name: "Box",
@@ -33,6 +33,16 @@ export default {
       this.showCheckedCities = this.getListPost.filter((item) =>
         val.includes(item.code)
       );
+    },
+  },
+  methods: {
+    ...mapActions([
+      "saveItem",
+      "Delete",
+    ]),
+    DeleteItem(code) {
+      const data = this.citiesChecked.filter((item) => item != code);
+      this.saveItem(data);
     },
   },
 };

@@ -97,10 +97,7 @@ export default {
       this.check = false;
       this.syncData();
     },
-    DeleteItem(code) {
-      const data = this.citiesChecked.filter((item) => item != code);
-      this.saveItem(data);
-    },
+ 
     handleChangeSelectCity(index) {
       this.showCities[index].isCheck = !this.showCities[index].isCheck;
     },
