@@ -1,5 +1,7 @@
 export default {
-  users: [],
-  user: {},
-  currentStep: 4,
+    users: [],
+    user: {},
+    currentStep: 3,
+    postList: [],
+    listSave: [],
 };

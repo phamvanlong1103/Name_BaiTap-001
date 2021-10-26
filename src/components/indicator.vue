@@ -13,7 +13,7 @@ export default {
   computed: {
     ...mapGetters(["getCurrentStep"]),
     progress: function() {
-      return ((this.getCurrentStep - 1) / this.totalSteps) * 100 + "%";
+      return ((this.getCurrentStep) / this.totalSteps) * 100 + "%";
     },
   },
 };

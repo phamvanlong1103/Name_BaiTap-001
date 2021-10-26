@@ -1,12 +1,12 @@
 <template>
   <div class="list__main">
-    <div id="list__main-box" :class="show(2)">
+    <div id="list__main-box" :class="show(1)">
       <span class="list__main-box-number">1</span> About You
     </div>
-    <div id="list__main-box" :class="show(3)">
+    <div id="list__main-box" :class="show(2)">
       <span class="list__main-box-number">2</span>About your Company
     </div>
-    <div id="list__main-box" :class="show(4)">
+    <div id="list__main-box" :class="show(3)">
       <span class="list__main-box-number">3</span>Finishing Up
     </div>
   </div>
@@ -20,6 +20,7 @@ export default {
       isOpen: true,
       isCLoseTwo: false,
       getStep: this.getCurrentStep,
+      
     };
   },
 
