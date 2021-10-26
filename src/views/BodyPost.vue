@@ -5,9 +5,8 @@
         {{ post[item.key] }}
       </td>
       <td>
-        <b-button variant="danger"
-          >Button
-          <router-link :to="LinkUser">Edit</router-link>
+        <b-button variant="danger">
+          <router-link :to="LinkUser" style="color:white">Edit</router-link>
         </b-button>
       </td>
     </tr>

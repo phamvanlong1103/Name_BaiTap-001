@@ -280,7 +280,7 @@ input {
 
   .box {
     position: absolute;
-    top: 520px;
+    top: 102px;
     left: 95px;
     background: #ffffff;
     border-radius: 4px;
