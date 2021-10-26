@@ -1,4 +1,4 @@
-import axiosInstance from "../../axios";
+import axiosInstance from "../axios";
 export default {
     async getUserById({ commit }) {
         try {
@@ -47,14 +47,13 @@ export default {
         commit("OPEN_LIST", data);
     },
 
-    saveItem({ commit }) {
-        commit("SAVE_LIST_POSTS");
+    saveItem({ commit }, data) {
+        commit("SAVE_CITY_CHECKED", data);
     },
     cancelItem({ commit }) {
         commit("CANCEL_LIST_POSTS");
     },
     Delete({ commit }, item) {
-
         commit("SAVE_LIST_New", item);
     },
 };

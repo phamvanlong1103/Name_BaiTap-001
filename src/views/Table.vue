@@ -8,14 +8,15 @@
       <div class="container__table-seclect" v-if="check">
         <div class="container__table-seclect-list">
           <ul name="" id="">
-            <li v-for="item in getListPost" :key="item.code">
+            <li v-for="(item, index) in showCities" :key="item.code">
               <label class="lab">
                 <input
                   class="checkbox"
                   type="checkbox"
                   name=""
                   id=""
-                  v-model="item.check"
+                  :checked="item.isCheck ? true : false"
+                  @change="handleChangeSelectCity(index)"
                 />
                 <p>{{ item.name }}</p>
                 <span class="checkmark"></span>
@@ -27,7 +28,7 @@
         <div class="select-group-button">
           <button
             class="container__table-btn next success"
-            @click="sumbitOpenList"
+            @click="handleSumitSelectCities"
           >
             Đồng ý
           </button>
@@ -37,37 +38,33 @@
         </div>
       </div>
     </div>
-    <div class="box" v-if="getListSave.length > 0">
-      <div class="box-content">
-        <div
-          class="box-content-item"
-          v-for="item in getListSave"
-          :key="item.code"
-        >
-          <span>{{ item.name }} </span>
-          <i
-            class="fa fa-times"
-            aria-hidden="true"
-            @click="DeleteItem(item)"
-          ></i>
-        </div>
-      </div>
-    </div>
+    <Box />
   </div>
 </template>
 
 <script>
-import { mapActions, mapGetters } from "vuex";
+import { mapActions, mapGetters, mapState } from "vuex";
+import Box from "../components/Box.vue";
 export default {
   name: "Table",
   data() {
-    return { check: false };
+    return { check: false, showCities: [], showCheckedCities: [] };
   },
-  created() {
-    this.getListPostHasPaging();
-  },
+  components: { Box },
   computed: {
-    ...mapGetters(["getListPost", "getOpenList", "getListSave"]),
+    ...mapGetters(["getListPost", "getOpenList"]),
+    ...mapState(["citiesChecked"]),
+  },
+  watch: {
+    citiesChecked(val) {
+      this.showCheckedCities = this.getListPost.filter((item) =>
+        val.includes(item.code)
+      );
+    },
+  },
+  async created() {
+    await this.getListPostHasPaging();
+    this.syncData();
   },
   methods: {
     ...mapActions([
@@ -80,16 +77,32 @@ export default {
     OpenList() {
       this.check = !this.check;
     },
-    sumbitOpenList() {
+    syncData() {
+      const newCities = JSON.parse(JSON.stringify(this.getListPost));
+      this.showCities = newCities.map((item) => {
+        if (this.citiesChecked.includes(item.code)) {
+          item.isCheck = true;
+        }
+        return item;
+      });
+    },
+    handleSumitSelectCities() {
       this.check = false;
-      this.saveItem();
+      const data = this.showCities
+        .filter((item) => item.isCheck)
+        .map((itemChecked) => itemChecked.code);
+      this.saveItem(data);
     },
     cancelSave() {
       this.check = false;
+      this.syncData();
     },
-    DeleteItem(item) {
-      item.check = false;
-      this.Delete(item);
+    DeleteItem(code) {
+      const data = this.citiesChecked.filter((item) => item != code);
+      this.saveItem(data);
+    },
+    handleChangeSelectCity(index) {
+      this.showCities[index].isCheck = !this.showCities[index].isCheck;
     },
   },
 };
@@ -154,13 +167,25 @@ input {
       margin-bottom: 64px;
       position: relative;
       box-shadow: 0px 1px 8px rgba(102, 102, 102, 0.2);
-
+      ::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+      }
       .container__table-seclect-list {
         height: 240px;
         overflow-y: scroll;
         overflow-x: hidden;
       }
-
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 62px;
+      }
+      ::-webkit-scrollbar-track {
+        border-radius: 6px;
+      }
+      ::-webkit-scrollbar-thumb {
+        border-radius: 6px;
+        background: #dcdcdc;
+      }
       ul {
         list-style: none;
         position: relative;
@@ -285,9 +310,12 @@ input {
     background: #ffffff;
     border-radius: 4px;
     width: 480px;
-    height: 48px;
+    height: auto;
     box-sizing: border-box;
     border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
 
     .box-search {
       width: 480px;
@@ -325,24 +353,22 @@ input {
     border-radius: 4px;
 
     .box-content-item {
-      display: inline-block;
+      display: inline-flex;
+      justify-content: center;
+      align-content: center;
       position: relative;
       background: #f8f8f8;
-      text-align: center;
       color: #333333;
       width: 180px;
       border-radius: 32px;
       height: 32px;
       margin-top: 4px;
+      padding-top: 4px;
 
       i {
         position: absolute;
         right: 8px;
-        top: 5px;
-      }
-      span {
-        margin-left: -30px;
-        margin-top: 20px;
+        top: 8px;
       }
     }
   }

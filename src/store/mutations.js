@@ -15,8 +15,8 @@ export default {
     SET_LIST_POSTS(state, data) {
         state.postList = data;
     },
-    SAVE_LIST_POSTS(state) {
-        state.listSave = state.postList.filter((item) => item.check);
+    SAVE_CITY_CHECKED(state, data) {
+        state.citiesChecked = data;
     },
     CANCEL_LIST_POSTS(state) {
         state.postList = state.listSave;

@@ -4,4 +4,5 @@ export default {
     currentStep: 3,
     postList: [],
     listSave: [],
+    citiesChecked: [],
 };

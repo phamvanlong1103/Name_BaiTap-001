@@ -12,7 +12,7 @@ export default {
         return state.postList;
     },
     getListSave: (state) => {
-        return state.listSave;
+        return state.citiesChecked;
     },
 
     getOpenList: (state) => {
