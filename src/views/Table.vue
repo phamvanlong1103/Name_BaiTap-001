@@ -97,7 +97,7 @@ export default {
       this.check = false;
       this.syncData();
     },
- 
+
     handleChangeSelectCity(index) {
       this.showCities[index].isCheck = !this.showCities[index].isCheck;
     },
